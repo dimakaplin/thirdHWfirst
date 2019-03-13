@@ -38,7 +38,19 @@ public class MainActivity extends AppCompatActivity {
         mBtnOk.setOnClickListener(v-> {
             String money = mInputMoney.getText().toString();
             String info = mInputInfo.getText().toString();
-            Toast.makeText(MainActivity.this, money + " неизвестной валюты будет потрачено не на наркотики, а на " + info, Toast.LENGTH_LONG).show();
+            String message = "";
+            if(mCashAddressChkBx.isChecked()) {
+                message = "будет отправлено по адресу";
+            } else if (mBankCardChkBx.isChecked()) {
+                message = "будет отправлено на карту";
+            } else if (mMobilePhoneChkBx.isChecked()) {
+                message = "будет отправлено на телефон";
+            } else {
+                message = "будет отправлено в пустоту";
+            }
+
+
+            Toast.makeText(MainActivity.this, money + " неизвестной валюты будет потрачено не на наркотики, а " + message + " " + info, Toast.LENGTH_LONG).show();
         });
     }
 
